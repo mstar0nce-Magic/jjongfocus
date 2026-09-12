@@ -1,1 +1,1 @@
-(()=>{const s=document.createElement('script');s.src='./timeline2.js?v=0171';s.defer=false;document.head.appendChild(s)})();
+(()=>{const s=document.createElement('script');s.src='./timeline2.js?v=0172';s.defer=false;s.onload=()=>{const r=document.createElement('script');r.src='./record-reset.js?v=0172';r.defer=false;document.head.appendChild(r)};document.head.appendChild(s)})();
