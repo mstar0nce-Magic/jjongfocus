@@ -1,1 +1,74 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#274f3b"><meta name="apple-mobile-web-app-capable" content="yes"><title>쫑글킵 v0.1.0</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png"><link rel="stylesheet" href="jjongkeep.css"></head><body><div class="app"><header class="top"><div class="brand"><h1>쫑글킵 <small>v0.1.0</small></h1><small>사진·메모·체크리스트를 빠르게 저장하고, 필요할 때 오늘과 지금 하나로.</small></div><div class="search"><input id="search" placeholder="메모 검색"></div><div class="actions"><button id="recoveryBtn" class="btn soft">🌿 다시 돌아오기</button></div></header><section class="composer"><input id="title" placeholder="제목"><textarea id="body" placeholder="메모를 입력하세요. 체크리스트 모드에서는 줄마다 한 항목으로 저장돼요."></textarea><div class="composer-tools"><label class="btn ghost">📷 사진<input id="photoInput" type="file" accept="image/*"></label><span id="photoName"></span><label class="btn ghost"><input id="checkMode" type="checkbox"> ☑ 체크리스트</label><button id="save" class="btn primary">저장</button></div></section><nav class="chipbar"><button class="chip active" data-filter="all">전체</button><button class="chip" data-filter="today">오늘</button><button class="chip" data-filter="now">🔥 지금 하나</button><button class="chip" data-filter="archive">보관함</button></nav><section id="focusCard" class="focus-card hidden"></section><main id="board" class="board"></main><div id="empty" class="empty">아직 메모가 없어요.<br>사진 한 장이나 메모 한 줄부터 저장해봐요.</div></div><dialog id="recovery" class="modal"><div class="modal-inner"><h2>🌿 다시 돌아오기</h2><p>머리가 복잡하거나 마음이 힘들 때, 해결하려 하지 말고 그냥 적어두세요.</p><textarea id="recoveryText" placeholder="지금 머릿속에 있는 걸 아무렇게나 적어봐"></textarea><div class="row"><button id="recoverySave" class="btn ghost">그냥 저장</button><button id="recoveryOne" class="btn primary">지금 하나로</button><button id="recoveryClose" class="btn soft">닫기</button></div></div></dialog><script src="jjongkeep.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#234734">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>쫑글킵 v0.2.0</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="jjongkeep.css?v=020">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div>
+        <h1>쫑글킵 <small>v0.2.0</small></h1>
+        <p>Keep에 모으고, 여기서 정리해서 행동으로.</p>
+      </div>
+    </header>
+
+    <section class="quick">
+      <textarea id="quickText" placeholder="직접 적거나, Google Keep에서 공유해 보내세요."></textarea>
+      <div id="photoPreview" class="photo-preview hidden"></div>
+      <div class="quick-actions">
+        <label class="btn secondary">📷 사진 선택<input id="photoInput" type="file" accept="image/*" multiple></label>
+        <button id="quickSave" class="btn primary">저장</button>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="보기 선택">
+      <button class="tab active" data-view="inbox">받은 것</button>
+      <button class="tab" data-view="today">오늘</button>
+      <button class="tab" data-view="archive">보관</button>
+    </nav>
+
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="검색">
+    </div>
+
+    <main id="list" class="list"></main>
+    <div id="empty" class="empty hidden">
+      <strong>아직 정리할 게 없어요.</strong>
+      <span>캡처나 메모를 Google Keep에 저장한 뒤<br>공유 → 쫑글킵으로 보내면 여기에 들어와요.</span>
+    </div>
+  </div>
+
+  <dialog id="editDialog">
+    <form method="dialog" class="edit-card">
+      <div class="edit-head">
+        <strong>메모 수정</strong>
+        <button class="icon-btn" value="cancel" aria-label="닫기">✕</button>
+      </div>
+      <textarea id="editText" placeholder="내용"></textarea>
+      <div id="editPhotos" class="edit-photos"></div>
+      <label class="btn secondary full">📷 사진 추가<input id="editPhotoInput" type="file" accept="image/*" multiple></label>
+      <div class="type-picker" id="editTypes">
+        <button type="button" data-type="task">✓ 할 일</button>
+        <button type="button" data-type="idea">💡 아이디어</button>
+        <button type="button" data-type="reference">📚 자료</button>
+      </div>
+      <label class="today-toggle"><input id="editToday" type="checkbox"> 오늘 할 일로 보기</label>
+      <div class="edit-actions">
+        <button id="editDelete" type="button" class="btn danger">삭제</button>
+        <button id="editSave" type="button" class="btn primary">수정 저장</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="jjongkeep.js?v=020"></script>
+</body>
+</html>
