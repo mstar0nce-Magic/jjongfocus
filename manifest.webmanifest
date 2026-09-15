@@ -21,9 +21,7 @@
       "title": "title",
       "text": "text",
       "url": "url",
-      "files": [
-        {"name":"files","accept":["image/*","text/plain",".jpg",".jpeg",".png",".webp",".gif",".txt"]}
-      ]
+      "files": [{"name":"files","accept":["image/*"]}]
     }
   }
 }
