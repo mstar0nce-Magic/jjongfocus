@@ -1,11 +1,11 @@
 {
-  "name": "쫑포커스",
-  "short_name": "쫑포커스",
-  "description": "생각과 스크린샷을 던져두고 지금 할 하나에 집중하는 개인 생산성 PWA",
+  "name": "쫑글킵",
+  "short_name": "쫑글킵",
+  "description": "사진, 메모, 체크리스트와 오늘/지금 하나 기능을 결합한 개인 메모 PWA",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f4f5f7",
-  "theme_color": "#111827",
+  "background_color": "#f7f8f5",
+  "theme_color": "#274f3b",
   "icons": [
     {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"},
     {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"}
