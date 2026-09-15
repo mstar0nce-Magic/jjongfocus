@@ -1,0 +1,1 @@
+.note-block-content{display:grid;gap:18px}.note-block-text{white-space:pre-wrap;font-size:16px;line-height:1.65;overflow-wrap:anywhere}.note-block-image{display:block;width:calc(100% + 28px);max-height:none;margin-left:-14px;object-fit:contain;background:#f3f5f3}.note-block-content+.note-source{margin-top:18px}
