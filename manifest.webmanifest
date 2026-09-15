@@ -1,4 +1,5 @@
 {
+  "id": "./",
   "name": "쫑글킵",
   "short_name": "쫑글킵",
   "description": "Google Keep에 모은 메모와 캡처를 정리하고 오늘의 행동으로 바꾸는 심플 PWA",
@@ -12,7 +13,7 @@
     {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"}
   ],
   "share_target": {
-    "action": "share-target",
+    "action": "./share-target",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {
