@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "쫑글킵",
-  "short_name": "쫑글킵",
+  "name": "쫑킵",
+  "short_name": "쫑킵",
   "description": "사진, 텍스트, 링크를 빠르게 모으고 정리하는 개인 메모함",
   "start_url": "/",
   "scope": "/",
