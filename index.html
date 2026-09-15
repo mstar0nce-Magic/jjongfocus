@@ -35,10 +35,7 @@
       <button class="tab" data-view="archive">보관</button>
     </nav>
 
-    <div class="toolbar">
-      <input id="search" type="search" placeholder="검색">
-    </div>
-
+    <div class="toolbar"><input id="search" type="search" placeholder="검색"></div>
     <main id="list" class="list"></main>
     <div id="empty" class="empty hidden">
       <strong>아직 정리할 게 없어요.</strong>
@@ -48,10 +45,7 @@
 
   <dialog id="editDialog">
     <form method="dialog" class="edit-card">
-      <div class="edit-head">
-        <strong>메모 수정</strong>
-        <button class="icon-btn" value="cancel" aria-label="닫기">✕</button>
-      </div>
+      <div class="edit-head"><strong>메모 수정</strong><button class="icon-btn" value="cancel" aria-label="닫기">✕</button></div>
       <textarea id="editText" placeholder="내용"></textarea>
       <div id="editPhotos" class="edit-photos"></div>
       <label class="btn secondary full">📷 사진 추가<input id="editPhotoInput" type="file" accept="image/*" multiple></label>
@@ -61,10 +55,8 @@
         <button type="button" data-type="reference">📚 자료</button>
       </div>
       <label class="today-toggle"><input id="editToday" type="checkbox"> 오늘 할 일로 보기</label>
-      <div class="edit-actions">
-        <button id="editDelete" type="button" class="btn danger">삭제</button>
-        <button id="editSave" type="button" class="btn primary">수정 저장</button>
-      </div>
+      <label class="today-toggle"><input id="editArchive" type="checkbox"> 보관함으로 보내기</label>
+      <div class="edit-actions"><button id="editDelete" type="button" class="btn danger">삭제</button><button id="editSave" type="button" class="btn primary">수정 저장</button></div>
     </form>
   </dialog>
 
