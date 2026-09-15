@@ -1,0 +1,15 @@
+(()=>{'use strict';
+const stage=document.querySelector('#viewerStage'),img=document.querySelector('#viewerImage');if(!stage||!img)return;
+let scale=1,x=0,y=0,startX=0,startY=0,baseX=0,baseY=0,pinchStart=0,pinchScale=1,lastTapAt=0,lastTapX=0,lastTapY=0,doubleDrag=false,doubleStartY=0,doubleStartScale=1,doubleAnchorX=0,doubleAnchorY=0,moved=false,twoFinger=false;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function apply(){img.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;img.style.transition='none'}
+function reset(){scale=1;x=0;y=0;pinchStart=0;doubleDrag=false;apply()}
+function dist(t){return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY)}
+function stop(e){e.preventDefault();e.stopImmediatePropagation()}
+function zoomAt(next,cx,cy){const old=scale;next=clamp(next,1,5);if(next===1){scale=1;x=0;y=0;apply();return}const r=next/old;x=cx-(cx-x)*r;y=cy-(cy-y)*r;scale=next;apply()}
+stage.addEventListener('touchstart',e=>{if(e.touches.length===2){stop(e);twoFinger=true;moved=true;doubleDrag=false;pinchStart=dist(e.touches);pinchScale=scale;return}if(e.touches.length!==1)return;const t=e.touches[0],now=Date.now();startX=t.clientX;startY=t.clientY;baseX=x;baseY=y;moved=false;twoFinger=false;if(now-lastTapAt<330&&Math.hypot(t.clientX-lastTapX,t.clientY-lastTapY)<55){stop(e);doubleDrag=true;doubleStartY=t.clientY;doubleStartScale=scale;doubleAnchorX=t.clientX;doubleAnchorY=t.clientY;lastTapAt=0}else{doubleDrag=false;lastTapAt=now;lastTapX=t.clientX;lastTapY=t.clientY}},{capture:true,passive:false});
+stage.addEventListener('touchmove',e=>{if(e.touches.length===2){stop(e);moved=true;const d=dist(e.touches);if(!pinchStart){pinchStart=d;pinchScale=scale}const a=e.touches[0],b=e.touches[1];zoomAt(pinchScale*d/pinchStart,(a.clientX+b.clientX)/2,(a.clientY+b.clientY)/2);return}if(e.touches.length!==1)return;const t=e.touches[0];if(doubleDrag){stop(e);moved=true;const dy=t.clientY-doubleStartY;const next=doubleStartScale*Math.exp(dy/170);zoomAt(next,doubleAnchorX,doubleAnchorY);return}if(scale>1.01){stop(e);moved=true;x=baseX+(t.clientX-startX);y=baseY+(t.clientY-startY);apply()}},{capture:true,passive:false});
+stage.addEventListener('touchend',e=>{if(twoFinger){stop(e);if(e.touches.length<2)pinchStart=0;if(!e.touches.length)twoFinger=false;return}if(doubleDrag){stop(e);if(!e.touches.length){doubleDrag=false;if(scale<1.03)reset()}return}if(e.touches.length)return;const t=e.changedTouches[0],dx=t.clientX-startX,dy=t.clientY-startY;if(scale<=1.01){reset();if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.25){stop(e);document.querySelector(dx<0?'#viewerNext':'#viewerPrev')?.click()}}},{capture:true,passive:false});
+new MutationObserver(()=>{if(document.querySelector('#photoViewer')?.classList.contains('hidden'))reset()}).observe(document.querySelector('#photoViewer'),{attributes:true,attributeFilter:['class']});
+new MutationObserver(reset).observe(img,{attributes:true,attributeFilter:['src']});
+})();
