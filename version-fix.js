@@ -1,1 +1,0 @@
-(()=>{'use strict';const VERSION='v0.2.0';document.title=`쫑포커스 ${VERSION}`;const v=document.querySelector('.topbar h1 span');if(v)v.textContent=VERSION;})();
