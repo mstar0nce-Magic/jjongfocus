@@ -5,6 +5,7 @@ function patchIndexedDB(){if(window.__damdaIdbPatched||typeof IDBObjectStore==='
 function activeView(){return document.querySelector('.tab.active')?.dataset.view||'inbox'}
 function requestRefresh(){clearTimeout(refreshTimer);refreshTimer=setTimeout(refresh,30)}
 async function refresh(){if(refreshing){pending=true;return}refreshing=true;try{const view=activeView();const search=document.querySelector('#search');if(search)search.dispatchEvent(new Event('input',{bubbles:true}));if(view==='calendar')window.JjongCalendar?.render?.();await new Promise(r=>requestAnimationFrame(()=>r()));}finally{refreshing=false;if(pending){pending=false;requestRefresh()}}}
-function init(){patchIndexedDB();document.addEventListener(EVENT,requestRefresh);window.DamdaData={changed:emit,refresh:requestRefresh};}
+patchIndexedDB();
+function init(){document.addEventListener(EVENT,requestRefresh);window.DamdaData={changed:emit,refresh:requestRefresh};}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
