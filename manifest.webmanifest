@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "쫑킵",
-  "short_name": "쫑킵",
-  "description": "사진, 텍스트, 링크를 빠르게 모으고 정리하는 개인 메모함",
+  "name": "기록담다",
+  "short_name": "기록담다",
+  "description": "생각, 사진, 텍스트, 링크와 할 일을 한곳에 담고 정리하는 종합 기록 앱",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
