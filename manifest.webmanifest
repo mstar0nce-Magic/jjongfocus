@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "기록담다",
-  "short_name": "기록담다",
+  "name": "담다",
+  "short_name": "담다",
   "description": "생각, 사진, 텍스트, 링크와 할 일을 한곳에 담고 정리하는 종합 기록 앱",
   "start_url": "/",
   "scope": "/",
