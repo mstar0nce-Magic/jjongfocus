@@ -1,6 +1,4 @@
-/* Calendar overview: month stays compact; week becomes a larger detail surface. */
-.calendar-day.has-record:after{background:var(--day-status-color,#234734)!important}
-#calendarWeekMode.active~*{}
+/* Calendar layout: month stays compact; week becomes a larger detail surface. */
 .calendar-view:has(#calendarWeekMode.active) .calendar-day{min-height:96px;padding-top:10px;padding-bottom:22px}
 .calendar-view:has(#calendarWeekMode.active) .calendar-day>span{display:block;font-size:17px;font-weight:800}
 .calendar-view:has(#calendarWeekMode.active) .calendar-day .day-count{font-size:10px;bottom:14px}
