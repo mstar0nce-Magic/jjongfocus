@@ -1,7 +1,14 @@
 /* Calendar layout: month stays compact; week becomes a larger detail surface. */
 .calendar-view:has(#calendarWeekMode.active) .calendar-day{min-height:96px;padding-top:10px;padding-bottom:22px}
 .calendar-view:has(#calendarWeekMode.active) .calendar-day>span{display:block;font-size:17px;font-weight:800}
-.calendar-view:has(#calendarWeekMode.active) .calendar-day .day-count{font-size:10px;bottom:14px}
-.calendar-view:has(#calendarWeekMode.active) .calendar-day.has-record:after{width:7px;height:7px;bottom:5px}
-.calendar-day .priority-alert{position:absolute;top:3px;right:5px;color:#b44747;font-size:14px;line-height:1;font-weight:900}
+
+/* Record presence is expressed by one quiet circular count badge. */
+.calendar-day.has-record:after{display:none!important}
+.calendar-day .priority-alert{display:none!important}
+.calendar-day .day-count{position:absolute;left:50%!important;right:auto!important;bottom:5px!important;transform:translateX(-50%);display:flex!important;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;margin:0!important;background:#e8f0ea;color:#315740;font-size:0!important;line-height:1;font-weight:800;white-space:nowrap}
+.calendar-day .day-count::before{content:attr(data-count);font-size:9px}
+.calendar-day:has(.priority-alert) .day-count{background:#f4dddd;color:#9b2929}
+
+.calendar-view:has(#calendarWeekMode.active) .calendar-day .day-count{bottom:8px!important;width:21px;height:21px}
+.calendar-view:has(#calendarWeekMode.active) .calendar-day .day-count::before{font-size:10px}
 @media(max-width:480px){.calendar-view:has(#calendarWeekMode.active) .calendar-day{min-height:88px;padding-left:2px;padding-right:2px}.calendar-view:has(#calendarWeekMode.active) .calendar-day>span{font-size:16px}}
