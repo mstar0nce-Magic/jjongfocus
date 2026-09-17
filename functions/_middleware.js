@@ -4,6 +4,6 @@ export async function onRequest(context){
   if(!type.includes('text/html'))return response;
   const text=await response.text();
   if(text.includes('/damda-sync.js'))return new Response(text,response);
-  const injected=text.replace('</body>','<script src="https://accounts.google.com/gsi/client" async defer></script><script src="/damda-sync.js?v=1824"></script></body>');
+  const injected=text.replace('</body>','<script src="https://accounts.google.com/gsi/client" async defer></script><script src="/damda-sync.js?v=1825"></script></body>');
   return new Response(injected,{status:response.status,statusText:response.statusText,headers:response.headers});
 }
