@@ -16,3 +16,5 @@ html,body{background:var(--bg);color:var(--ink)}body{background-image:linear-gra
 
 /* Bottom nav: make icon and label share the full button hit area */
 .bottom-nav button{position:relative;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.bottom-nav button>span{pointer-events:none;user-select:none;-webkit-user-select:none}
+
+.today-item[data-priority="1"]{border-color:var(--mint)}.today-item[data-priority="2"]{border-color:var(--blue)}.today-item[data-priority="3"]{border-color:var(--yellow)}.today-item[data-priority="4"]{border-color:var(--pink)}
